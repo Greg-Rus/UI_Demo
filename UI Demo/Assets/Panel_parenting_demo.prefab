@@ -54,9 +54,9 @@ GameObject:
   m_Component:
   - component: {fileID: 224218092388435008}
   - component: {fileID: 222395870936505570}
+  - component: {fileID: 114320647399228184}
   - component: {fileID: 114751693972779822}
   - component: {fileID: 114484551217484054}
-  - component: {fileID: 114320647399228184}
   m_Layer: 5
   m_Name: Button 1
   m_TagString: Untagged
@@ -318,7 +318,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 114320647399228184}
-        m_MethodName: SetParentLegacy
+        m_MethodName: SetParentLocalStays
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

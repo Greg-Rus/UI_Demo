@@ -1,26 +1,38 @@
 ﻿
+using UnityEditor;
 using UnityEngine;
 
 public class InsetDemo : MonoBehaviour
 {
     private RectTransform _myRectTransform;
+    public RectTransform.Edge ParentEdge;
+    public float Inset;
+    public float Size;
+
+
     void Start ()
     {
         _myRectTransform = GetComponent<RectTransform>();
     }
 
-	//void Update () {
-		
-	//}
-
-    public void InsetHorisontal(float normalizedInset)
+    public void UpdateInset()
     {
         var x = _myRectTransform.parent as RectTransform;
-        _myRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, x.rect.width * normalizedInset, _myRectTransform.rect.width);
+        _myRectTransform.SetInsetAndSizeFromParentEdge(ParentEdge, Inset, Size);
     }
-    public void InsetVertical(float normalizedInset)
+}
+
+[CustomEditor(typeof(InsetDemo))]
+public class ObjectBuilderEditor : Editor
+{
+    public override void OnInspectorGUI()
     {
-        var x = _myRectTransform.parent as RectTransform;
-        _myRectTransform.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Bottom, x.rect.height * normalizedInset, _myRectTransform.rect.height);
+        DrawDefaultInspector();
+
+        InsetDemo setOffsetScript = (InsetDemo)target;
+        if (GUILayout.Button("Update Inset"))
+        {
+            setOffsetScript.UpdateInset();
+        }
     }
 }
